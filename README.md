@@ -1,4 +1,3 @@
-# D10Nix
+# KrNix
 
 # TODO
-    * Start configuring routes etc for the operator, then go on with the services
