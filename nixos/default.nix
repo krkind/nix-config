@@ -1,15 +1,16 @@
-{ config, desktop, hostname, hardwareConfig, herelinkSSID, inputs, lib, modulesPath, outputs, pkgs, stateVersion, username, ... }: {
+{ config, desktop, hostname, herelinkSSID, inputs, lib, modulesPath, outputs, pkgs, stateVersion, username, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./_mixins/services/openssh.nix
     ./_mixins/services/avahi.nix
     ./_mixins/users/${username}
-  ] ++ lib.optional (builtins.isString desktop) ./_mixins/desktop
-  ++ lib.optional (hostname != "dvm") inputs.disko.nixosModules.disko
-  ++ lib.optional (hostname != "dvm") ./${hardwareConfig};
+  ] ++ lib.optional (builtins.isString desktop) ./_mixins/desktop;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
+
 
   services.xserver.desktopManager.gnome.extraGSettingsOverrides = lib.mkForce ''
     [org.gnome.shell]
@@ -35,7 +36,6 @@
     ];
     systemPackages = with pkgs; [
       ffmpeg
-      airostream_client
       gnumake
       pciutils
       psmisc

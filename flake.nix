@@ -65,7 +65,7 @@
           #
           #########################################
 
-          kristian@nix-home = lib.nixosSystem {
+          krkindhome = lib.nixosSystem {
 
             modules = [
               ./nixos
@@ -78,8 +78,8 @@
                 };
                 home-manager.extraSpecialArgs = {
                   inherit inputs outputs stateVersion;
-                  hostname = "nix-home";
-                  platform = "x86_64-linux"
+                  hostname = "krkindhome";
+                  platform = "x86_64-linux";
                   username = "kristian";
                 };
               }
@@ -87,7 +87,7 @@
 
             specialArgs = {
               inherit inputs outputs stateVersion;
-              hostname = "nix-home";
+              hostname = "krkindhome";
               username = "kristian";
               desktop = "gnome";
             };
@@ -100,7 +100,7 @@
           #
           #########################################
 
-          kristian@nix-work = lib.nixosSystem {
+          krkindwork = lib.nixosSystem {
 
             modules = [
               ./nixos
@@ -113,8 +113,8 @@
                 };
                 home-manager.extraSpecialArgs = {
                   inherit inputs outputs stateVersion;
-                  hostname = "nix-work";
-                  platform = "x86_64-linux"
+                  hostname = "krkindwork";
+                  platform = "x86_64-linux";
                   username = "kristian";
                 };
               }
@@ -122,7 +122,7 @@
 
             specialArgs = {
               inherit inputs outputs stateVersion;
-              hostname = "nix-work";
+              hostname = "krkindwork";
               username = "kristian";
               desktop = "gnome";
             };
@@ -131,7 +131,7 @@
 
           # Build using: nix build .#nixosConfigurations.krnix-installer.config.system.build.isoImage 
           # Handy debug tip: nix eval .#nixosConfigurations.krnix-installer.config.isoImage.squashfsCompression
-          iso-installer = lib.nixosSystem {
+          krkind-nix-installer = lib.nixosSystem {
             modules = [
               ./nixos
               (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix")
