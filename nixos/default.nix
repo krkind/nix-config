@@ -4,6 +4,8 @@
     ./_mixins/services/openssh.nix
     ./_mixins/services/avahi.nix
     ./_mixins/users/${username}
+     inputs.disko.nixosModules.disko
+   ./krkindwork
   ] ++ lib.optional (builtins.isString desktop) ./_mixins/desktop;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

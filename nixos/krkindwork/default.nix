@@ -1,8 +1,6 @@
-# Surface Go 4
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ../_mixins/services/tailscale.nix
     (import ./disks.nix { })
   ];
 
@@ -25,6 +23,5 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

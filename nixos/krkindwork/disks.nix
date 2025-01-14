@@ -1,9 +1,9 @@
-{ disks ? [ "/dev/disk/by-path/pci-0000:00:12.7-scsi-0:0:0:0" ], ... }:
+{ disks ? [ "/dev/nvme0n1" ], ... }:
 {
   disko.devices = {
     disk = {
       nvme = {
-        device = "/dev/disk/by-path/pci-0000:00:12.7-scsi-0:0:0:0";
+        device = "/dev/nvme0n1";
         type = "disk";
         content = {
           type = "gpt";
